@@ -1,0 +1,2 @@
+class RatersController < ApplicationController
+end
