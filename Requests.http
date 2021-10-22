@@ -1,0 +1,54 @@
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJleHAiOjE2MzUwMDcwMzF9.O9Qz0ppX9PhzM_o7IyjqBa6XrTqr1bIzKPNIBRqt5qg
+
+### Users Index
+GET http://localhost:3000/users
+
+### Users Create
+POST http://localhost:3000/users.json
+Content-Type: application/json
+  
+  {
+    "first_name": "testuser1",
+    "last_name": "testuser1",
+    "email": "testuser3@test.com",
+    "password": "password",
+    "password_confirmation": "password",
+    "job": "test job",
+    "location": "test location",
+    "bio": "test bio"
+  }
+
+
+### Sessions create (login)
+POST http://localhost:3000/sessions
+Content-Type: application/json
+
+  {
+    "email": "testuser3@test.com",
+    "password": "password"
+  }
+
+
+### Photos create
+POST http://localhost:3000/photos
+Authorization: Bearer {{jwt}}
+Content-Type: application/json
+
+{
+  "img_url": "https://cdn2.vectorstock.com/i/1000x1000/92/26/user-silhouette-with-question-mark-icon-vector-8989226.jpg"
+}
+
+
+### Photos update
+PATCH http://localhost:3000/photos/17.json
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+{
+  "img_url": "https://cdn2.iconfinder.com/data/icons/flat-style-svg-icons-part-1/512/check_user_man-512.png"
+}
+
+### Photos Destroy
+DELETE http://localhost:3000/photos/17
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
