@@ -1,4 +1,4 @@
-@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJleHAiOjE2MzUwMDcwMzF9.O9Qz0ppX9PhzM_o7IyjqBa6XrTqr1bIzKPNIBRqt5qg
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJleHAiOjE2MzU1MzI3ODV9.2guSu-dBQP_evBCn5dujxs8nip2PDuI_T7JvSjwIhP8
 
 ### Users Index
 GET http://localhost:3000/users
@@ -19,7 +19,7 @@ Content-Type: application/json
   }
 
 
-### Sessions create (login)
+### User Sessions create (login)
 POST http://localhost:3000/sessions
 Content-Type: application/json
 
@@ -28,6 +28,19 @@ Content-Type: application/json
     "password": "password"
   }
 
+### Rater Sessions create (login)
+POST http://localhost:3000/rater_sessions
+Content-Type: application/json
+
+{ 
+  "email": "rater1@test.com",
+  "password": "password"
+}
+
+### Photos Index
+GET http://localhost:3000/photos
+Authorization: Bearer {{jwt}}
+Content-Type: application/json
 
 ### Photos create
 POST http://localhost:3000/photos
@@ -52,3 +65,28 @@ Authorization: Bearer {{jwt}}
 DELETE http://localhost:3000/photos/17
 Content-Type: application/json
 Authorization: Bearer {{jwt}}
+
+### Ratings Create
+POST http://localhost:3000/ratings
+Authorization: Bearer {{jwt}}
+Content-Type: application/json
+
+{
+  "description": "This photo is too blury",
+  "score_for_photo": 50,
+  "rater_feed_back": 1
+}
+
+
+### Raters Create
+
+POST http://localhost:3000/raters.json
+Content-Type: application/json
+  
+  {
+    "first_name": "testuser1",
+    "last_name": "testuser1",
+    "email": "testuser3@test.com",
+    "password": "password",
+    "password_confirmation": "password"
+  }

@@ -1,6 +1,12 @@
 class PhotosController < ApplicationController
   before_action :authenticate_user
 
+  def index
+    photos = Photo.all
+    render json: photos, include: "ratings"
+    ## Need to add serializer code on line 6 to connect ratings to photos
+  end
+
   def create
     photo = Photo.new(
       img_url: params[:img_url],
