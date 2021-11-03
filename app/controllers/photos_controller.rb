@@ -2,14 +2,16 @@ class PhotosController < ApplicationController
   before_action :authenticate_user
 
   def index
-    photos = Photo.all
+    photos = current_user.photos
     render json: photos, include: "ratings"
     ## Need to add serializer code on line 6 to connect ratings to photos
   end
 
   def create
+    response = Cloudinary::Uploader.upload(params[:image_file], resource_type: :auto)
+    cloudinary_url = response["secure_url"]
     photo = Photo.new(
-      img_url: params[:img_url],
+      img_url: cloudinary_url,
       user_id: current_user.id,
     )
     if photo.save

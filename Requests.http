@@ -1,4 +1,4 @@
-@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJleHAiOjE2MzU1MzI3ODV9.2guSu-dBQP_evBCn5dujxs8nip2PDuI_T7JvSjwIhP8
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo5LCJleHAiOjE2MzU5NDg5NzJ9.og_5SV1lwJh6EMhwo12dui0-LDYYvrZ2vqwgPItKE0g
 
 ### Users Index
 GET http://localhost:3000/users
