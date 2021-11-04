@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   before_action :authenticate_user
 
   def index
-    photos = current_user.photos
+    photos = current_user.photos.order(:id)
     render json: photos, include: "ratings"
     ## Need to add serializer code on line 6 to connect ratings to photos
   end
@@ -33,5 +33,12 @@ class PhotosController < ApplicationController
     photo = Photo.find_by(id: params[:id], user_id: current_user.id)
     photo.destroy
     render json: { message: "Photo successfully removed" }
+  end
+
+  def analyze
+    photo = Photo.find_by(id: params[:id], user_id: current_user.id)
+    response = HTTP.get("http://api.skybiometry.com/fc/faces/detect.json?api_key=#{Rails.application.credentials.sky_biometry_key}&api_secret=#{Rails.application.credentials.sky_biometry_secret}&urls=#{photo.img_url}&attributes=all")
+    response = JSON.parse(response.body)
+    render json: response
   end
 end
