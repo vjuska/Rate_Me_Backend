@@ -13,4 +13,14 @@ class RatingsController < ApplicationController
       render json: { errors: rating.errors.full_messages }, status: :bad_request
     end
   end
+
+  def update
+    rating = Rating.find_by(id: params[:id])
+    rating.rater_id = params[:rater_id] || rating.rater_id
+    rating.description = params[:description] || rating.description
+    rating.score_for_photo = params[:score_for_photo] || rating.score_for_photo
+    rating.rater_feed_back = params[:rater_feed_back] || rating.rater_feed_back
+    rating.save
+    render json: rating.as_json
+  end
 end

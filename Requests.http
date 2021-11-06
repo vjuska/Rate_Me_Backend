@@ -77,6 +77,16 @@ Content-Type: application/json
   "rater_feed_back": 1
 }
 
+### Ratings Update
+PATCH http://localhost:3000/ratings/1
+Content-Type: application/json
+
+{
+  "description": "New description",
+  "rater_feed_back": 1,
+  "score_for_photo": 50
+}
+
 
 ### Raters Create
 
@@ -90,3 +100,4 @@ Content-Type: application/json
     "password": "password",
     "password_confirmation": "password"
   }
+

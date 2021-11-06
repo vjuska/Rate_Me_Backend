@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   # RATERS
   post "/raters" => "raters#create"
-  post "/ratings" => "ratings#create"
 
   # PHOTOS
   get "/photos" => "photos#index"
@@ -19,4 +18,8 @@ Rails.application.routes.draw do
   # SESSIONS
   post "/sessions" => "sessions#create"
   post "/rater_sessions" => "rater_sessions#create"
+
+  # RATINGS
+  patch "/ratings/:id" => "ratings#update"
+  post "/ratings" => "ratings#create"
 end
